@@ -7,9 +7,8 @@
       name:
       - nmap
       state: latest
-      cache_valid_time: 3600
   - name: Scan host using nmap
-    shell: nmap "{{ ip_var }}"
+    shell: nmap "{{ 10.0.0.100 }}"
     register: out
 
   - debug: var=out.stdout_lines
