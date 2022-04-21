@@ -8,7 +8,7 @@
       - nmap
       state: latest
   - name: Scan host using nmap
-    shell: nmap "{{ 10.0.0.100 }}"
+    shell: nmap 10.0.0.100
     register: out
 
   - debug: var=out.stdout_lines
