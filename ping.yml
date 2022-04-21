@@ -1,7 +1,15 @@
 ---
-- name: Example from an Ansible Playbook
-    ansible.builtin.ping:
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install packages
+    apt:
+      name:
+      - nmap
+      state: latest
+      cache_valid_time: 3600
+  - name: Scan host using nmap
+    shell: nmap "{{ ip_var }}"
+    register: out
 
-- name: Induce an exception to see what happens
-    ansible.builtin.ping:
-      data: crash
+  - debug: var=out.stdout_lines
