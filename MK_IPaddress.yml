@@ -1,0 +1,13 @@
+---
+ - hosts: mikrotik
+   connection: network_cli
+   gather_facts: no
+
+   tasks:
+     - name: Mostra os IPs
+       routeros_command:
+         commands: /ip add print
+       register: version_output
+     - name: Mostra comando
+       debug:
+         var: version_output
